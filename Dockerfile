@@ -13,10 +13,11 @@ RUN addgroup -S olefy \
 
 ADD https://raw.githubusercontent.com/HeinleinSupport/olefy/master/olefy.py /app/
 
+COPY --chown=olefy:olefy profile /home/olefy/.profile
 COPY olefy.conf /etc
 
-RUN chown -R nobody:nobody /app /tmp
+RUN chown -R olefy:olefy /app /tmp
 
-USER nobody
+USER olefy
 
 CMD ["python3", "-u", "/app/olefy.py"]
