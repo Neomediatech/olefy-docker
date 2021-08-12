@@ -2,8 +2,9 @@ FROM alpine
 
 WORKDIR /app
 
-#RUN addgroup -S olefy && adduser -S olefy -G olefy \
-RUN apk add --virtual .build-deps gcc musl-dev python3-dev libffi-dev openssl-dev cargo \
+RUN addgroup -S olefy \
+  && adduser -S olefy -G olefy -g "Olefy User" \
+  && apk add --virtual .build-deps gcc musl-dev python3-dev libffi-dev openssl-dev cargo \
   && apk add --update --no-cache python3 py3-pip openssl tzdata libmagic \
   && pip3 install --upgrade pip \
   && pip3 install --upgrade asyncio python-magic \
