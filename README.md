@@ -17,3 +17,6 @@
 
 ## Run
 docker run -p 10050:10050 --name olefy neomediatech/olefy
+
+## License
+see [Author's repo](https://github.com/HeinleinSupport/olefy#license)
