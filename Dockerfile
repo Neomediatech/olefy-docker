@@ -9,7 +9,11 @@ ENV OLEFY_BINDADDRESS= \
     OLEFY_MINLENGTH=500 \
     OLEFY_DEL_TMP=1 \
     OLEFY_DEL_TMP_FAILED=1 \
-    SERVICE=olefy-docker
+    SERVICE=olefy-docker \
+    OS=alpine \
+    TZ=Europe/Rome
+
+# OLEFY_LOGLVL= 10:DEBUG,20:INFO,30:WARNING,40:ERROR,50:CRITICAL
 
 LABEL maintainer="docker-dario@neomediatech.it" \
       org.label-schema.version=$VERSION \
@@ -30,11 +34,12 @@ RUN addgroup -S olefy \
 
 ADD https://raw.githubusercontent.com/HeinleinSupport/olefy/master/olefy.py /app/
 
-COPY --chown=olefy:olefy profile /home/olefy/.profile
-COPY olefy.conf /etc
+RUN cp /usr/share/zoneinfo/${TZ} /etc/localtime && echo "${TZ}" > /etc/timezone
 
 RUN chown -R olefy:olefy /app /tmp
 
 USER olefy
 
 CMD ["python3", "-u", "/app/olefy.py"]
+
+HEALTHCHECK --interval=20s --timeout=3s --start-period=10s --retries=10 CMD res=$(echo -ne "PING\n\n" | nc 127.0.0.1 $OLEFY_BINDPORT) ; if [ "x$res" != "xPONG" ]; then echo "Bad things are happening here" ; exit 1 ; else echo "At your service, sir!" ; fi
