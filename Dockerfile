@@ -1,5 +1,22 @@
 FROM alpine
 
+ENV OLEFY_BINDADDRESS= \
+    OLEFY_BINDPORT=10050 \
+    OLEFY_TMPDIR=/tmp \
+    OLEFY_PYTHON_PATH=/usr/bin/python3 \
+    OLEFY_OLEVBA_PATH=/usr/bin/olevba3 \
+    OLEFY_LOGLVL=30 \
+    OLEFY_MINLENGTH=500 \
+    OLEFY_DEL_TMP=1 \
+    OLEFY_DEL_TMP_FAILED=1 \
+    SERVICE=olefy-docker
+
+LABEL maintainer="docker-dario@neomediatech.it" \
+      org.label-schema.version=$VERSION \
+      org.label-schema.vcs-type=Git \
+      org.label-schema.vcs-url=https://github.com/Neomediatech/$SERVICE \
+      org.label-schema.maintainer=Neomediatech
+
 WORKDIR /app
 
 RUN addgroup -S olefy \
