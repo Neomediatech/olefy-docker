@@ -13,7 +13,7 @@
 | OLEFY_MINLENGTH      | Minimum size of file to scan           | 500         |
 | OLEFY_DEL_TMP        | Delete temp files after use            | 1           |
 | OLEFY_DEL_TMP_FAILED | Delete temp files on failure           | 1           |
-| TIMEZONE             | For container, eg Europe/London        | unset       |
+| TZ                   | For container, eg Europe/Rome          | Europe/Rome |
 
 ## Run
 docker run -p 10050:10050 --name olefy neomediatech/olefy
