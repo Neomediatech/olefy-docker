@@ -1,10 +1,10 @@
-FROM alpine
+FROM python:3-alpine
 
 ENV OLEFY_BINDADDRESS= \
     OLEFY_BINDPORT=10050 \
     OLEFY_TMPDIR=/tmp \
     OLEFY_PYTHON_PATH=/usr/bin/python3 \
-    OLEFY_OLEVBA_PATH=/usr/bin/olevba3 \
+    OLEFY_OLEVBA_PATH=/usr/local/bin/olevba \
     OLEFY_LOGLVL=20 \
     OLEFY_MINLENGTH=500 \
     OLEFY_DEL_TMP=1 \
@@ -28,8 +28,7 @@ RUN addgroup -S olefy \
   && apk add --virtual .build-deps gcc musl-dev python3-dev libffi-dev openssl-dev cargo \
   && apk add --update --no-cache python3 py3-pip openssl tzdata libmagic \
   && pip3 install --upgrade pip \
-  && pip3 install --upgrade asyncio python-magic \
-  && pip3 install --upgrade https://github.com/HeinleinSupport/oletools/archive/master.zip \
+  && pip3 install --upgrade colorclass oletools asyncio python-magic \
   && apk del .build-deps
 
 ADD https://raw.githubusercontent.com/HeinleinSupport/olefy/master/olefy.py /app/
