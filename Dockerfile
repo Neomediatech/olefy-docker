@@ -51,4 +51,4 @@ ENTRYPOINT ["/usr/local/bin/olefy.py"]
 #      org.label-schema.vcs-url=https://github.com/Neomediatech/$SERVICE \
 #      org.label-schema.maintainer=Neomediatech
 
-HEALTHCHECK --interval=20s --timeout=3s --start-period=10s --retries=10 CMD res=$(echo -ne "PING\n\n" | nc 127.0.0.1 $OLEFY_BINDPORT) ; if [ "x$res" != "xPONG" ]; then echo "Bad things are happening here" ; exit 1 ; else echo "At your service, sir!" ; fi
+#HEALTHCHECK --interval=20s --timeout=3s --start-period=10s --retries=10 CMD res=$(echo -ne "PING\n\n" | nc 127.0.0.1 $OLEFY_BINDPORT) ; if [ "x$res" != "xPONG" ]; then echo "Bad things are happening here" ; exit 1 ; else echo "At your service, sir!" ; fi
