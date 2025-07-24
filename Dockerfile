@@ -33,7 +33,8 @@ RUN apk add --no-cache --virtual .build-deps \
     pip install -r requirements.txt && \
     apk del .build-deps 
 
-ADD https://raw.githubusercontent.com/HeinleinSupport/olefy/master/olefy.py /usr/local/bin/olefy.py
+#ADD https://raw.githubusercontent.com/HeinleinSupport/olefy/master/olefy.py /usr/local/bin/olefy.py
+ADD https://raw.githubusercontent.com/Neomediatech/olefy-docker/refs/heads/main/olefy.py /usr/local/bin/olefy.py
 
 RUN adduser -S olefy && chmod +x /usr/local/bin/olefy.py && \
     cp /usr/share/zoneinfo/${TZ} /etc/localtime && echo "${TZ}" > /etc/timezone && \
