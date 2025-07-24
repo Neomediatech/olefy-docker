@@ -60,7 +60,7 @@ logger.debug('olefy listen address string: {} (type {})'.format(olefy_listen_add
 if not olefy_listen_addr_string:
     olefy_listen_addr = ""
 else:
-    addr_re = re.compile('[\[" \]]')
+    addr_re = re.compile(r'[\[" \]]')
     olefy_listen_addr = addr_re.sub('', olefy_listen_addr_string.replace("'", "")).split(',')
 
 # log runtime variables
