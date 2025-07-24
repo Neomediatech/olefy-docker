@@ -1,1 +1,1 @@
-gio 24 lug 2025, 19:50:34, CEST --- ghcr.io/neomediatech/olefy:latest UPDATED (image build needed: true)
+gio 24 lug 2025, 19:55:39, CEST --- ghcr.io/neomediatech/olefy:latest not-needed (image build needed: false)
